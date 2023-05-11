@@ -43,11 +43,17 @@ VALUES	('Nguyễn Thế Hưng', '2002-12-18', 0, 0),
 SELECT * FROM datatypes2;
 
 -- Question 2
-SELECT * FROM trainee WHERE evaluation_notes != 'bad';
+SELECT MONTH(birth_date) AS 'tháng sinh', GROUP_CONCAT(full_name) AS 'các thực tập sinh đã vượt qua bài test đầu vào' FROM trainee 
+WHERE evaluation_notes != 'bad'
+GROUP BY MONTH(birth_date);
 
 -- Question 3
-SELECT * FROM trainee
-ORDER BY CHAR_LENGTH(full_name) DESC LIMIT 1;
+SELECT full_name, birth_date, gender, training_class, vti_account 
+FROM trainee
+WHERE LENGTH(full_name) = 
+	(SELECT MAX(LENGTH(full_name))
+     FROM trainee);
+
 
 -- Question 4
 SELECT * FROM trainee

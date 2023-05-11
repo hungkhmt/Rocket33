@@ -53,7 +53,9 @@ VALUES	(6, 11, '2023-04-01'),
         (13, 15, '2023-04-02'),
         (14, 7, '2023-04-02'),
         (15, 5, '2023-04-01');
-        
+
+INSERT INTO Group_Account(group_id, account_id, join_date)
+VALUE	(16, 5, '2023-04-01');
 SELECT * FROM Group_Account;
 
 INSERT INTO Category_Question(category_name)
@@ -139,10 +141,10 @@ ORDER BY CHAR_LENGTH(full_name) DESC LIMIT 1;
 
 -- Question 6
 SELECT * FROM Groupp
-WHERE create_date > '2019-12-20';
+WHERE create_date < '2019-12-20';
 
 -- Question 7
-SELECT question_id FROM Answer
+SELECT question_id, COUNT(answer_id) FROM Answer
 GROUP BY question_id
 HAVING count(question_id) >= 4;
 
@@ -155,13 +157,13 @@ SELECT * FROM Groupp
 ORDER BY create_date DESC LIMIT 5;
 
 -- Question 10
-SELECT COUNT(department_id) FROM Accountt
-WHERE department_id = 2
-GROUP BY department_id;
+SELECT COUNT(1) 
+FROM accountt 
+WHERE department_id = 2;
 
 -- Question 11
 SELECT * FROM Accountt
-WHERE full_name LIKE 'D%' AND '%o';
+WHERE full_name LIKE 'D%o';
 
 -- Question 12
 DELETE
